@@ -20,22 +20,22 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 4. due to some issues i encountered while developing this application, i had to create the internet gateway stack separately. Please clone it by running 'git clone https://github.com/Zaynola/WooCommerce-IGW.git' and then when in the directory you run cdk deploy.
 5. when you connect to your servers through the bastion host, please confirm the user script ran as expected. if not please run the following lines below (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html):
 
-sudo yum update -y
-sudo amazon-linux-extras install mariadb10.5 -y
-sudo amazon-linux-extras install php8.2 -y
-sudo systemctl start httpd
-sudo systemctl enable httpd
-sudo usermod -a -G apache ec2-user
-exit 
+* sudo yum update -y
+* sudo amazon-linux-extras install mariadb10.5 -y
+* sudo amazon-linux-extras install php8.2 -y
+* sudo systemctl start httpd
+* sudo systemctl enable httpd
+* sudo usermod -a -G apache ec2-user
+* exit 
 //log back in//
-sudo chown -R ec2-user:apache /var/www
-sudo chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
-find /var/www -type f -exec sudo chmod 0664 {} \;
-sudo yum install php-mbstring php-xml -y
-sudo systemctl restart httpdphsudo systemctl restart php-fpm
-cd /var/www/html
-wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
-mkdir phpMyAdmin && tar -xvzf phpMyAdmin-latest-all-languages.tar.gz -C phpMyAdmin --strip-components 1
-rm phpMyAdmin-latest-all-languages.tar.gz
-echo "I am load balancing properly as expected" > index.html
+* chown -R ec2-user:apache /var/www
+* chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
+* find /var/www -type f -exec sudo chmod 0664 {} \;
+* sudo yum install php-mbstring php-xml -y
+* sudo systemctl restart httpdphsudo systemctl restart php-fpm
+* cd /var/www/html
+* wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
+* mkdir phpMyAdmin && tar -xvzf phpMyAdmin-latest-all-languages.tar.gz -C phpMyAdmin --strip-components 1
+* rm phpMyAdmin-latest-all-languages.tar.gz
+* echo "I am load balancing properly as expected" > index.html
 
