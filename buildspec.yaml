@@ -3,11 +3,14 @@ version: 0.2
 phases:
   install:
     commands:
+      - "nvm install 16"  
+      - "nvm use 16"
       - "npm install -g typescript"
       - "npm install -g aws-cdk"
-  # pre_build:
-  #   commands:
-  #     - cdk synth
+   
+   pre_build:
+     commands:
+       - cdk synth
 
   build:
     commands:
