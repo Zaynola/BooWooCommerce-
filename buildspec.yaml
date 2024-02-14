@@ -7,6 +7,6 @@ phases:
   build:
     commands:
       - cdk synth
-  deploy:
+  post-build:
     commands:
       - cdk deploy
