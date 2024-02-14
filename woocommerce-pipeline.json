@@ -1,0 +1,90 @@
+{
+    "pipeline": {
+        "name": "BMO-WooCommerce-pipeline",
+        "roleArn": "arn:aws:iam::217420232628:role/CodePipeline",
+        "artifactStore": {
+            "type": "S3",
+            "location": "boowoocommerce-test"
+        },
+        "stages": [
+            {
+                "name": "Source",
+                "actions": [
+                    {
+                        "name": "SourceAction",
+                        "actionTypeId": {
+                            "category": "Source",
+                            "owner": "ThirdParty",
+                            "version": "1",
+                            "provider": "GitHub"
+                        },
+                        "outputArtifacts": [
+                            {
+                                "name": "WOO-COMMERCE"
+                            }
+                        ],
+                        "configuration": {
+                            "Owner": "Zaynola",
+                            "Repo": "BooWooCommerce-",
+                            "Branch": "master",
+                            "OAuthToken": "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"
+                        },
+                        "runOrder": 1
+                    }
+                ]
+            },
+            {
+                "name": "Build",
+                "actions": [
+                    {
+                        "inputArtifacts": [
+                            {
+                                "name": "WOO-COMMERCE"
+                            }
+                        ],
+                        "name": "BuildAction",
+                        "actionTypeId": {
+                            "category": "Build",
+                            "owner": "AWS",
+                            "version": "1",
+                            "provider": "CodeBuild"
+                        },
+                        "outputArtifacts": [
+                            {
+                                "name": "final-Woo-Commerce"
+                            }
+                        ],
+                        "configuration": {
+                            "ProjectName": "BMOWooCommerce-pipeline"
+                        },
+                        "runOrder": 1
+                    }
+                ]
+            },
+            {
+                "name": "Deploy",
+                "actions": [
+                    {
+                        "name": "DeployAction",
+                        "actionTypeId": {
+                            "category": "Deploy",
+                            "owner": "AWS",
+                            "version": "1",
+                            "provider": "CodeDeploy"
+                        },
+                        "inputArtifacts": [
+                            {
+                                "name": "final-Woo-Commerce"
+                            }
+                        ],
+                        "configuration": {
+                            "ApplicationName": "BMOWooCommerce-pipeline",
+                            "DeploymentGroupName": "BMOWooCommerceDeploymentGroup"
+                        },
+                        "runOrder": 2
+                    }
+                ]
+            }
+        ]
+    }
+}
