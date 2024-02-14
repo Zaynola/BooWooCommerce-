@@ -5,9 +5,9 @@ phases:
     commands:
       - "npm install -g typescript"
       - "npm install -g aws-cdk"
-  pre_build:
-    commands:
-      - cdk synth
+  # pre_build:
+  #   commands:
+  #     - cdk synth
 
   build:
     commands:
