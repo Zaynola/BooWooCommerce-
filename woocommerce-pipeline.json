@@ -1,7 +1,7 @@
 {
     "pipeline": {
         "name": "BMO-WooCommerce-pipeline",
-        "roleArn": "arn:aws:iam::217420232628:role/CodePipeline",
+        "roleArn": "arn:aws:iam::<AWS_ACCOUNT_ID>:role/CodePipeline",
         "artifactStore": {
             "type": "S3",
             "location": "boowoocommerce-test"
@@ -27,7 +27,7 @@
                             "Owner": "Zaynola",
                             "Repo": "BooWooCommerce-",
                             "Branch": "master",
-                            "OAuthToken": "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"
+                            "OAuthToken": "<GitHub_TOKEN"
                         },
                         "runOrder": 1
                     }

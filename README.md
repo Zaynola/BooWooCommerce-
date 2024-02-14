@@ -30,12 +30,16 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 //log back in//
 * chown -R ec2-user:apache /var/www
 * chmod 2775 /var/www && find /var/www -type d -exec sudo chmod 2775 {} \;
-* find /var/www -type f -exec sudo chmod 0664 {} \;
+* find /var/www -type f -exec 
+* sudo chmod 0664 {} \;
 * sudo yum install php-mbstring php-xml -y
-* sudo systemctl restart httpdphsudo systemctl restart php-fpm
+* sudo systemctl restart httpdphsudo
+* systemctl restart php-fpm
 * cd /var/www/html
 * wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
 * mkdir phpMyAdmin && tar -xvzf phpMyAdmin-latest-all-languages.tar.gz -C phpMyAdmin --strip-components 1
 * rm phpMyAdmin-latest-all-languages.tar.gz
 * echo "I am load balancing properly as expected" > index.html
 
+##
+1. in youe woocommerce-pipeline.json file, please update the variables there e.g account id, githut taken, create IAM roles.
