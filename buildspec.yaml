@@ -15,6 +15,6 @@ phases:
     commands:
     - npm run build
 
-  post-build:
+  post_build:
     commands:
       - cdk deploy
